@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body background="http://kristinmullertranscription.com/wp-content/uploads/2013/12/medical.jpg">
+
+
+<h1 style="text-align:center"> Electronic Medical Records </h1>
+<img src="https://www.colourbox.com/preview/2810358-pill-with-medical-cross.jpg" alt="Medical" style="width:400px;height:200px;">
+<hr>
+
+<form action="action_page.php">
+User name:<br>
+<input type="text" name="userid">
+<br>
+User password:<br>
+<input type="password" name="psw">
+<br>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
