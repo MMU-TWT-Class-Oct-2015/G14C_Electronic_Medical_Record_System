@@ -16,6 +16,36 @@ User password:<br>
 <br>
 <input type="submit" value="Submit">
 </form>
+<html>
+
+<head>
+<script language="JavaScript">
+    function function1(){
+        document.all.myMarquee.stop();
+    }
+    function function2(){
+        document.all.myMarquee.start();
+    }
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Welcome To Electronic Medical Record system</title>
+
+</head>
+<body background="http://kristinmullertranscription.com/wp-content/uploads/2013/12/medical.jpg">
+
+<h1> Welcome To Electronic Medical Record system </h1>
+	<tr>
+		<td width="23%">
+		<p align="center">
+		<a href="login.php"> 
+		<img border="0" src="image/login_icon1.gif" width="192" height="140"></a></td>
+	</tr>
+	
+	
+</table>
+
+</body>
+
 
 </body>
 </html>
