@@ -1,7 +1,41 @@
+<?php
+ session_start();
+  include_once("connect.php");
+  if(isset($_POST['submit'])!=""){
+
+  $user=mysql_real_escape_string($_POST['username']);
+  $userpsw=mysql_real_escape_string($_POST['password']);
+  $fname=mysql_real_escape_string($_POST['first_name']);
+  $lname=mysql_real_escape_string($_POST['last_name']);
+  $pat=mysql_real_escape_string($_POST['patient_ic']);
+  $age=mysql_real_escape_string($_POST['age']);
+  $date=mysql_real_escape_string($_POST['date_of_birth']);
+  $add=mysql_real_escape_string($_POST['address']);
+  $cou=mysql_real_escape_string($_POST['country']);
+  $gen=mysql_real_escape_string($_POST['gender']);
+  $mhis=mysql_real_escape_string($_POST['medical_history']);
+
+  $update=mysql_query("INSERT INTO patient_data(username,password,first_name,last_name,patient_ic,age,date_of_birth,address,country,gender,medical_history)
+  VALUES('$user','$userpsw','$fname','$lname','$pat','$age','$date','$add','$cou','$gen','$mhis')");
+
+  if($update)
+  {
+	  $msg="Successfully Updated!!";
+	  echo "<script type='text/javascript'>alert('$msg');</script>";
+	  header('Location:admin.php');
+  }
+  else
+  {
+	 $errormsg="Something went wrong, Try again";
+	  echo "<script type='text/javascript'>alert('$errormsg');</script>";
+	  header('Location:admmin.php');
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
+
 <title><?php echo $user;?> - EMR</title>
 <link rel="stylesheet" type="text/css" href="style/mystyle.css">
 <link rel="stylesheet" href="style/style.css" type="text/css" media="screen" />
@@ -10,7 +44,7 @@
 <style>#left-column {height: 477px;}
  #main {height: 477px;}</style>
 </head>
-<body>
+<body background="http://www.noormedical.com/files/medical_0.jpg">
 <div id="content">
 <div id="header">
 <h1></a> Admin EMR</h1></div>
@@ -19,9 +53,8 @@
 		</div>
     <h3>Registration</h3>
 
-			<form name="myform" onsubmit="return validateForm(this);" action="admin.php " method="post" >
-			<table width="420" height="106" border="0" >
-
+			<form name="myform" onsubmit="return validateForm(this);" method="post" >
+			<table width="420" height="106"
 					<tr><td align="center"><input name="patient_ic" type="text" style="width:170px" placeholder="IC Number" required="required" id="patient_ic" /></td></tr>
 				<tr><td align="center"><input name="first_name" type="text" style="width:170px" placeholder="First Name" required="required" id="first_name" /></td></tr>
 				<tr><td align="center"><input name="last_name" type="text" style="width:170px" placeholder="Last Name" required="required" id="last_name"/></td></tr>
@@ -40,20 +73,12 @@
         </div>
 
     </div>
-    <div class="grid_7">
-        <a href=" " class="dashboard-module">
-        <input type="submit" value="Back">
-          </a>
+    <br>
+    <br>
+<?php include('view.php');?>
+</div>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-<?php include('view.php'); ?>
-
+</div>
+</div>
 </body>
 </html>

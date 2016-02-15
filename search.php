@@ -1,10 +1,25 @@
 <?php
-include_once ('data_connect.php');
+mysql_connect("localhost", "root", "") or die(mysql_error());
+mysql_select_db("medical") or die(mysql_error());
 if(isset($_POST['submit']))
 {
 $query = $_POST['query'];
 ?>
 <html>
+<style>
+body {
+
+	background-color: orange;
+}
+h1 {
+	font-family: "Cooper Black";
+	color: black;
+	text-align: center;
+
+}
+
+</style>
+
 <head>
 <title><?php  echo $query;?></title>
 <link href="style.css" rel="stylesheet" type="text/css" />
@@ -16,21 +31,40 @@ if(strlen($query) >= $min_length)
 {
 $query = htmlspecialchars($query);
 $query = mysql_real_escape_string($query);
-echo "<table border='0' width='300' align='center' cellpadding='1' cellspacing='1'>";
-echo "<tr align='center' bgcolor='#002C40' style='color:#FFF'>
-<td height='35px' width='150px'>Title</td> <td>Author</td>
 
-</tr>";
 $raw_results =
-
-mysql_query("SELECT * FROM patient WHERE (`title` LIKE '%".$query."%') OR (`text` LIKE '%".$query."%')");
+mysql_query("SELECT * FROM patient_data WHERE (`first_name` LIKE '%".$query."%') OR (`last_name` LIKE '%".$query."%')");
 if(mysql_num_rows($raw_results) > 0)
 {
 while($results = mysql_fetch_array($raw_results))
 {
-echo "<tr align='center' bgcolor='#0f7ea3'>
+echo "<tr align='middle' bgcolor='#0f7ea3'>
 
-<td height='25px'>".$results['title']."</td> <td>".$results['text']."</td>
+<td> First Name-> ".$results['first_name']."</td>
+<br>
+<br>
+<td>Last Name-> ".$results['last_name']."</td>
+<br
+<br>
+<td>Patient-> ".$results['patient_ic']."</td>
+<br>
+<br>
+<td>Age-> ".$results['age']."</td>
+<br>
+<br>
+<td>DOB-> ".$results['date_of_birth']."</td>
+<br>
+<br>
+<td>Address-> ".$results['address']."</td>
+<br>
+<br>
+<td>Country->  ".$results['country']."</td>
+<br>
+<br>
+<td>Gender-> ".$results['gender']."</td>
+<br>
+<br>
+<td>Medical History-> ".$results['medical_history']."</td>
 
 </tr>" ;
 }
@@ -49,4 +83,4 @@ echo "Minimum length is ".$min_length;
 
 ?>
 </body>
-</html> 
+</html>

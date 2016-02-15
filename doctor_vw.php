@@ -2,7 +2,7 @@
 session_start();
 include_once('connect.php');
 if(isset($_SESSION['username'])){
-$id=$_SESSION['admin_id'];
+$id=$_SESSION['doctor_id'];
 $user=$_SESSION['username'];
 }else{
 header("location:http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])." ");
@@ -11,22 +11,22 @@ exit();
 ?>
 <!DOCTYPE html>
 <html>
-<head>
 <style>
 body {
 
-	background-color: yellow;
+    background-color: white;
 }
 h1 {
-	font-family: "Cooper Black";
-	color: black;
-	text-align: center;
+    font-family: "Cooper Black";
+    color: black;
+    text-align: center;
 
 }
 
 </style>
 
-<title><?php echo $user;?> - Profile</title>
+<head>
+<title><?php echo $user;?> -EMR</title>
 <link rel="stylesheet" type="text/css" href="style/mystyle.css">
 <link rel="stylesheet" href="style/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="style/dashboard_styles.css"  media="screen" />
@@ -41,12 +41,11 @@ height: 470px;
 <body>
 <div id="content">
 <div id="header">
-<h1> Profile</h1></div>
-
+<h1> Admin EMR</h1></div>
 <ul>
-			<li><a href="insert.php">Detail</a></li>
-			<li><a href="visitor.html">Search</a></li>
 
+			<li><a href="insert.php"> Patient Records</a></li>
+			<li><a href="visitor.html">Search</a></li>
 			<li><a href="logout.php">Logout</a></li>
 		</ul>
 </div>
